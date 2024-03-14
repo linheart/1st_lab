@@ -2,16 +2,15 @@ mod count_vowels;
 
 use count_vowels::count_vowels;
 
-use std::io::{self, Read};
+use std::io;
 
 
 fn main(){
     let mut input_str = String::new();
-    let mut limited_stdin = io::stdin().lock().take(255);
 
-    println!("Write text to know how many vowels in it (max is 255 bytes)");
+    println!("Write text to know how many vowels in it");
     
-    match limited_stdin.read_to_string(&mut input_str) {
+    match io::stdin().read_line(&mut input_str) {
         Ok(_) => {},
         Err(_) => {println!("Failed to read a string")}
     }
