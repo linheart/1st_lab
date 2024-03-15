@@ -1,6 +1,10 @@
-mod to_uppercase;
-use to_uppercase::to_uppercase;
+mod casechange;
+use casechange::to_uppercase;
+use casechange::to_lowercase;
 
 fn main() {
-    println!("{}", to_uppercase("fhjdjdkdl"));
+    println!("{}", to_uppercase("fhjddkdl"));
+    println!("{}", to_lowercase("JGJHDJDKDDLD"))
 }
+
+
