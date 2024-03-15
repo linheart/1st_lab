@@ -1,3 +1,6 @@
+mod to_uppercase;
+use to_uppercase::to_uppercase;
+
 fn main() {
-    println!("Hello, world!");
+    println!("{}", to_uppercase("fhjdjdkdl"));
 }
