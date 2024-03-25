@@ -3,6 +3,6 @@ pub fn count_vowels(input_str: &str) -> usize {
     count = input_str
         .chars()
         .filter(|&c| "aeiouyAEIOUY".contains(c))
-        .count();
+        .count(); // считает количество элементов прошедших проверку
     return count;
 }
