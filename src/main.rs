@@ -1,11 +1,11 @@
 mod count_vowels;
 mod palindrome;
-//mod casechange;
+mod casechange;
 
 use count_vowels::count_vowels;
 use palindrome::palindrome;
-//use casechange::to_uppercase;
-//use casechange::to_lowercase;
+use casechange::to_uppercase;
+use casechange::to_lowercase;
 
 use std::io;
 
@@ -59,8 +59,8 @@ fn main() {
                     "{}",
                     format!("There are {} vowels in your text\n", count_vowels(&input_str)).purple()
                 ),
-            //"3" => println!("{}", to_uppercase(&input_str)),
-            //"4" => println!("{}", to_lowercase(&input_str)),
+            "3" => println!("{}", to_uppercase(&input_str)),
+            "4" => println!("{}", to_lowercase(&input_str)),
             _ => println!("{}", "Invalid option".red()),
         }
     }

@@ -1,1 +1,6 @@
 /target
+<<<<<<< HEAD
+=======
+Cargo.lock
+Cargo.toml
+>>>>>>> origin/andreeva
