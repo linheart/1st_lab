@@ -1,18 +1,21 @@
+mod casechange;
 mod count_vowels;
 mod palindrome;
-mod casechange;
 
+use casechange::to_lowercase;
+use casechange::to_uppercase;
 use count_vowels::count_vowels;
 use palindrome::palindrome;
-use casechange::to_uppercase;
-use casechange::to_lowercase;
 
 use std::io;
 
 use colored::*;
 
 fn main() {
-    println!("{}", "========A program for performing an operation on a string========".blue());
+    println!(
+        "{}",
+        "========A program for performing an operation on a string========".blue()
+    );
 
     loop {
         let mut input_str = String::new();
@@ -54,11 +57,14 @@ fn main() {
 
         match operation.as_str().trim() {
             "1" => println!("Your string is palindrome: {}", palindrome(&input_str)),
-            "2" =>
-                println!(
-                    "{}",
-                    format!("There are {} vowels in your text\n", count_vowels(&input_str)).purple()
-                ),
+            "2" => println!(
+                "{}",
+                format!(
+                    "There are {} vowels in your text\n",
+                    count_vowels(&input_str)
+                )
+                .purple()
+            ),
             "3" => println!("{}", to_uppercase(&input_str)),
             "4" => println!("{}", to_lowercase(&input_str)),
             _ => println!("{}", "Invalid option".red()),
