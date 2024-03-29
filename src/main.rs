@@ -4,7 +4,7 @@ use casechange::to_lowercase;
 
 fn main() {
     println!("{}", to_uppercase("fhjddkdl"));
-    println!("{}", to_lowercase("JGJHDJDKDDLD"))
+    println!("{}", to_lowercase("JGJHDJDKDDL"));
 }
 
 
