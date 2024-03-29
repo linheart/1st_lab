@@ -17,6 +17,7 @@ name = "laba"
 version = "0.1.0"
 dependencies = [
  "colored",
+ "palindrome",
 ]
 
 [[package]]
@@ -24,6 +25,12 @@ name = "lazy_static"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
+
+[[package]]
+name = "palindrome"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ad0e2dd895f762f1f48f435562f3e8f0162fb2cbc25b0ee7d3296ab0f39f0719"
 
 [[package]]
 name = "windows-sys"
