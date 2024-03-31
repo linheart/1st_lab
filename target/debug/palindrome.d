@@ -1,1 +1,0 @@
-/home/alex/Desktop/study/rust_projects/1st_lab/target/debug/palindrome: /home/alex/Desktop/study/rust_projects/1st_lab/src/is_palindrome/mod.rs /home/alex/Desktop/study/rust_projects/1st_lab/src/main.rs
