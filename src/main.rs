@@ -1,11 +1,11 @@
 mod casechange;
 mod count_vowels;
-mod palindrome;
+mod is_palindrome;
 
 use casechange::to_lowercase;
 use casechange::to_uppercase;
 use count_vowels::count_vowels;
-use palindrome::palindrome;
+use is_palindrome::is_palindrome;
 
 use std::io;
 
@@ -56,7 +56,7 @@ fn main() {
         }
 
         match operation.as_str().trim() {
-            "1" => println!("Your string is palindrome: {}", palindrome(&input_str)),
+            "1" => println!("Your string is palindrome: {}", is_palindrome(&input_str)),
             "2" => println!(
                 "{}",
                 format!(
