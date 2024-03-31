@@ -1,8 +1,8 @@
-mod palindrome;
+mod is_palindrome;
 
-use palindrome::palindrome;
+use is_palindrome::is_palindrome;
 
 fn main() {
-    let a = palindrome("lol");
+    let a = is_palindrome("what");
     println!("{}", a);
 }
