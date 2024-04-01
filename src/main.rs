@@ -7,6 +7,6 @@ fn remove_whitespace(s: &str) -> String {
 }
 
 fn main() {
-    let mut a = "ah satan sees natasha";
+    let mut a = "refer";
     println!("{}", is_palindrome(&remove_whitespace(&mut a)));
 }
