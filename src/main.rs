@@ -11,6 +11,10 @@ use std::io;
 
 use colored::*;
 
+fn remove_whitespace(s: &str) -> String {
+    return s.chars().filter(|c| !c.is_whitespace()).collect()
+}
+
 fn main() {
     println!(
         "{}",
@@ -70,4 +74,6 @@ fn main() {
             _ => println!("{}", "Invalid option".red()),
         }
     }
+
+
 }
