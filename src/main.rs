@@ -12,7 +12,7 @@ use std::io;
 use colored::*;
 
 fn remove_whitespace(s: &str) -> String {
-    return s.chars().filter(|c| !c.is_whitespace()).collect()
+    return s.chars().filter(|c| !c.is_whitespace()).collect();
 }
 
 fn main() {
@@ -60,7 +60,10 @@ fn main() {
         }
 
         match operation.as_str().trim() {
-            "1" => println!("Your string is palindrome: {}", is_palindrome(&input_str)),
+            "1" => println!(
+                "Your string is palindrome: {}",
+                is_palindrome(&remove_whitespace(&input_str))
+            ),
             "2" => println!(
                 "{}",
                 format!(
@@ -74,6 +77,4 @@ fn main() {
             _ => println!("{}", "Invalid option".red()),
         }
     }
-
-
 }
