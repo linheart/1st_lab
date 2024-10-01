@@ -2,22 +2,21 @@
 #define ARR_H
 
 #include "utility.h"
-#include <cstring>
 
 struct Array {
-  char *data;
+  string *data;
   size_t capacity;
   size_t length;
 };
 
 void resizeArray(Array *arr, size_t newCapacity);
-void append(Array *arr, const char value);
-void insert(Array *arr, size_t index, const char value);
-char get(Array *arr, size_t index);
+void append(Array *arr, string value);
+void insert(Array *arr, size_t index, string value);
+string get(Array *arr, size_t index);
 void remove(Array *arr, size_t index);
-void replace(Array *arr, size_t index, int value);
+void replace(Array *arr, size_t index, string value);
 size_t length(Array *arr);
 void readArray(Array *arr);
-void checkIndex(Array *arr, size_t index);
+void freeArray(Array *arr);
 
 #endif // ARR_H
