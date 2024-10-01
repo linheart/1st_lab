@@ -1,26 +1,40 @@
 #include "../include/arr.h"
-#include "../include/singly_linked_list.h"
+#include "../include/list.h"
+#include <thread>
 
 using namespace std;
 
 int main(int argc, char **argv) {
-  Node *node;
+  Node *singlyList;
+  SinglyLinkedList sList;
 
-  /*addTail(node, 't');*/
-  addTail(node, 'a');
-  addTail(node, 'b');
-  addTail(node, 'c');
-  addTail(node, 'd');
+  sList.addTail(singlyList, 'e');
+  sList.addTail(singlyList, 'f');
 
-  printList(node);
+  sList.removeValue(singlyList, 'e');
+  sList.removeValue(singlyList, 'f');
+  /*sList.addTail(singlyList, 'g');*/
+  /*sList.addTail(singlyList, 'h');*/
 
-  /*cout << findValue(node, 'b')->next->data << endl;*/
+  /*sList.removeTail(singlyList);*/
+  /*sList.removeTail(singlyList);*/
+
+  /*sList.removeHead(singlyList);*/
+  /*sList.removeHead(singlyList);*/
+  /*sList.removeHead(singlyList);*/
+
+  /*sList.addHead(singlyList, 'd');*/
+  /*sList.addHead(singlyList, 'c');*/
+  /*sList.addHead(singlyList, 'b');*/
+  /*sList.addHead(singlyList, 'a');*/
+
+  sList.printList(singlyList);
 
   /*removeHead(node);*/
   /*removeValue(node, 'c');*/
   /*printList(node);*/
 
-  freeList(node);
+  sList.freeList(singlyList);
 
   return 0;
 
