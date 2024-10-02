@@ -1,6 +1,6 @@
 #include "../include/list.h"
 
-void DoublyLinkedList::addHead(Node *&node, string value) {
+void DoublyLinkedList::addHead(Node *&node, const string value) {
   Node *newNode = new Node{value, node, nullptr};
   if (node) {
     node->prev = newNode;
@@ -8,7 +8,7 @@ void DoublyLinkedList::addHead(Node *&node, string value) {
   node = newNode;
 }
 
-void DoublyLinkedList::addTail(Node *&node, string value) {
+void DoublyLinkedList::addTail(Node *&node, const string value) {
   Node *newNode = new Node{value, nullptr, nullptr};
   Node **curNode = &node;
 
@@ -45,7 +45,7 @@ void DoublyLinkedList::removeTail(Node *&node) {
   (*curNode) = nullptr;
 }
 
-void DoublyLinkedList::removeValue(Node *&node, string target) {
+void DoublyLinkedList::removeValue(Node *&node, const string target) {
   Node **curNode = DoublyLinkedList::findValue(node, target);
   Node *tmp = *curNode;
 
@@ -62,7 +62,7 @@ void DoublyLinkedList::removeValue(Node *&node, string target) {
   delete tmp;
 }
 
-Node **DoublyLinkedList::findValue(Node *&node, string target) {
+Node **DoublyLinkedList::findValue(Node *&node, const string target) {
   Node **curNode = &node;
 
   while (*(curNode) && (*curNode)->data != target) {

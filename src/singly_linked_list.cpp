@@ -1,11 +1,11 @@
 #include "../include/list.h"
 
-void SinglyLinkedList::addHead(Node *&node, string value) {
+void SinglyLinkedList::addHead(Node *&node, const string value) {
   Node *newNode = new Node{value, node};
   node = newNode;
 }
 
-void SinglyLinkedList::addTail(Node *&node, string value) {
+void SinglyLinkedList::addTail(Node *&node, const string value) {
   Node *newNode = new Node{value, nullptr};
   Node **curNode = &node;
 
@@ -37,7 +37,7 @@ void SinglyLinkedList::removeTail(Node *&node) {
   (*curNode) = nullptr;
 }
 
-void SinglyLinkedList::removeValue(Node *&node, string target) {
+void SinglyLinkedList::removeValue(Node *&node, const string target) {
   Node **curNode = SinglyLinkedList::findValue(node, target);
   Node *tmp = *curNode;
 
@@ -45,7 +45,7 @@ void SinglyLinkedList::removeValue(Node *&node, string target) {
   delete tmp;
 }
 
-Node **SinglyLinkedList::findValue(Node *&node, string target) {
+Node **SinglyLinkedList::findValue(Node *&node, const string target) {
   Node **curNode = &node;
 
   while (*(curNode) && (*curNode)->data != target) {
