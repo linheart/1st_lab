@@ -52,8 +52,6 @@ Node **SinglyLinkedList::findValue(Node *&node, const string target) {
     curNode = &(*curNode)->next;
   }
 
-  assert(*curNode);
-
   return curNode;
 }
 
