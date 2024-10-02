@@ -3,6 +3,7 @@
 #include "../include/list.h"
 #include "../include/queue.h"
 #include "../include/stack.h"
+#include "../include/tree.h"
 
 using namespace std;
 
