@@ -1,6 +1,7 @@
 #include "../include/arr.h"
 #include "../include/list.h"
 #include "../include/queue.h"
+#include "../include/stack.h"
 
 using namespace std;
 
