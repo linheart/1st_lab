@@ -21,7 +21,7 @@ void append(Array *arr, string value) {
 }
 
 void insert(Array *arr, size_t index, string value) {
-  assert(index < arr->length);
+  assert(index <= arr->length);
 
   if (arr->length >= arr->capacity) {
     resizeArray(arr, arr->capacity * 2);
@@ -46,7 +46,7 @@ void remove(Array *arr, size_t index) {
   for (size_t i = index; i < size - 1; i++) {
     arr->data[i] = arr->data[i + 1];
   }
-  arr->data[arr->length] = '\0';
+
   arr->length--;
 }
 
