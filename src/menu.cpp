@@ -24,7 +24,6 @@ void mMenu(HNode &ht, Node *tokens, Data &data) {
   } else if (query == "MINSERT") {
     size_t index = stringToSize(tokens->next->next->data);
     string value = tokens->next->next->next->data;
-
     insert(arr, index, value);
   } else if (query == "MGET") {
     size_t index = stringToSize(tokens->next->next->data);
@@ -45,6 +44,7 @@ void mMenu(HNode &ht, Node *tokens, Data &data) {
   }
 
   data.str.clear();
+  data.str += data.name + " ";
   for (size_t i = 0; i < arr->length; i++) {
     data.str += arr->data[i] + " ";
   }
