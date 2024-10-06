@@ -1,40 +1,52 @@
 #include "../include/menu.h"
 
-void mMenu(map<string, any> &mp, const vector<string> tokens) {
-  string query = tokens[0];
-  string name = tokens[1];
+void mMenu(HNode &ht, Node *tokens, Data &data) {
+  ht.type = "Array";
 
-  if (!mp.count(name)) {
-    mp[name] = Array{nullptr, 2, 0};
-    any_cast<Array &>(mp[name]).data = new string[2];
+  string query = tokens->data;
+  string name = tokens->next->data;
+
+  Array *arr = new Array{nullptr, 2, 0};
+  arr->data = new string[arr->capacity];
+  ht.value = arr;
+
+  if (data.str[0]) {
+    stringstream stream(data.str);
+    string word;
+    while (stream >> word) {
+      append(arr, word);
+    }
   }
 
-  Array &arr = any_cast<Array &>(mp[name]);
-
   if (query == "MPUSH") {
-    string value = tokens[2];
-    append(&arr, value);
+    string value = tokens->next->next->data;
+    append(arr, value);
   } else if (query == "MINSERT") {
-    size_t index = stringToSize(tokens[2]);
-    string value = tokens[3];
+    size_t index = stringToSize(tokens->next->next->data);
+    string value = tokens->next->next->next->data;
 
-    insert(&arr, index, value);
+    insert(arr, index, value);
   } else if (query == "MGET") {
-    size_t index = stringToSize(tokens[2]);
-    cout << get(&arr, index) << endl;
+    size_t index = stringToSize(tokens->next->next->data);
+    cout << get(arr, index) << endl;
   } else if (query == "MREPLACE") {
-    size_t index = stringToSize(tokens[2]);
-    string value = tokens[3];
+    size_t index = stringToSize(tokens->next->next->data);
+    string value = tokens->next->next->next->data;
 
-    replace(&arr, index, value);
+    replace(arr, index, value);
   } else if (query == "MDEL") {
-    size_t index = stringToSize(tokens[2]);
+    size_t index = stringToSize(tokens->next->next->data);
 
-    remove(&arr, index);
+    remove(arr, index);
   } else if (query == "MLEN") {
-    cout << length(&arr) << endl;
+    cout << length(arr) << endl;
   } else {
     cout << "Wrong query" << endl;
+  }
+
+  data.str.clear();
+  for (size_t i = 0; i < arr->length; i++) {
+    data.str += arr->data[i] + " ";
   }
 }
 

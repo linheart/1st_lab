@@ -12,4 +12,10 @@ struct Node {
   Node *prev;
 };
 
+struct Data {
+  string name;
+  string str;
+  int numLine;
+};
+
 #endif // UTILITY_H

@@ -3,12 +3,13 @@
 
 #include "utility.h"
 
-const int TABLE_SIZE = 100;
+const size_t TABLE_SIZE = 100;
 
 struct HNode {
   string key;
-  string value;
+  void *value;
   HNode *next;
+  string type;
 };
 
 struct HashTable {
@@ -17,8 +18,8 @@ struct HashTable {
 
 unsigned hashFunction(const string &key);
 void initHashTable(HashTable &ht);
-void insert(HashTable &ht, const string &key, const string &value);
-string get(HashTable &ht, const string &key);
+void insert(HashTable &ht, const string &key, void *value, const string &type);
+void *get(HashTable &ht, const string &key);
 void remove(HashTable &ht, const string &key);
 void clearHashTable(HashTable &ht);
 

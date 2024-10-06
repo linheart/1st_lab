@@ -1,95 +1,72 @@
-#include "../include/arr.h"
+#include "../include/file_manager.h"
 #include "../include/menu.h"
 
-#include <fstream>
-
-vector<string> parse(const string &input) {
-  vector<string> tokens;
+Node *parse(const string &input) {
+  Node *tokens = nullptr;
+  SinglyLinkedList SList;
   istringstream iss(input);
   string token;
 
   while (iss >> token) {
-    tokens.push_back(token);
+    SList.addTail(tokens, token);
   }
 
   return tokens;
 }
 
-void freeAll(map<string, any> &mp) {
-  for (auto &[key, value] : mp) {
-    if (value.type() == typeid(Array)) {
-      freeArray(&any_cast<Array &>(mp[key]));
-    }
+void freeStructure(HNode &ht) {
+  if (ht.type == "Array") {
+    freeArray(static_cast<Array *>(ht.value));
   }
 }
 
-void printStructure(map<string, any> &mp, string key) {
-  if (mp.find(key) != mp.end()) {
-    any &value = mp[key];
+void printStructure(HNode &ht, const string key) {
+  /*assert(ht);*/
 
-    if (value.type() == typeid(Array)) {
-      readArray(&any_cast<Array &>(mp[key]));
-    }
-  } else {
-    cout << "There's no name: " << key << endl;
+  if (ht.type == "Array") {
+    readArray(static_cast<Array *>(ht.value));
   }
 }
 
 int main(int argc, char **argv) {
-  vector<string> tokens;
-  string input;
-  bool console = true;
-  map<string, any> mp;
+  assert(argc == 5 && string(argv[1]) == "--file" &&
+         string(argv[3]) == "--query");
 
-  if (argc > 1) {
-    assert(string(argv[1]) == "--file" && string(argv[3]) == "--query");
+  Data data;
+  SinglyLinkedList SList;
+  Node *tokens = parse(argv[4]);
+  data.name = tokens->next->data;
+  HNode ht = {data.name, nullptr, nullptr};
 
-    ifstream file(argv[2]);
+  readValuesFromFile(argv[2], data);
 
-    assert(file.is_open());
-
-    input = argv[4];
-    console = false;
-    file.close();
+  switch (tokens->data[0]) {
+  case 'M':
+    mMenu(ht, tokens, data);
+    break;
+  case 'L':
+    break;
+  case 'Q':
+    break;
+  case 'S':
+    break;
+  case 'H':
+    break;
+  case 'T':
+    break;
+  case 'P':
+    if (tokens->data == "PRINT") {
+      /*printStructure(ht, "h1");*/
+      break;
+    }
+  default:
+    cout << "Wrong query" << endl;
+    break;
   }
 
-  do {
-    if (console) {
-      getline(cin, input);
-    }
+  replaceLineInFile(argv[2], data.numLine, data.str);
 
-    tokens = parse(input);
-
-    if (tokens[0] == "EXIT") {
-      break;
-    }
-
-    switch (tokens[0][0]) {
-    case 'M':
-      mMenu(mp, tokens);
-      break;
-    case 'L':
-      break;
-    case 'Q':
-      break;
-    case 'S':
-      break;
-    case 'H':
-      break;
-    case 'T':
-      break;
-    case 'P':
-      if (tokens[0] == "PRINT") {
-        printStructure(mp, tokens[1]);
-        break;
-      }
-    default:
-      cout << "Wrong query" << endl;
-      break;
-    }
-  } while (console);
-
-  freeAll(mp);
-
+  SList.freeList(tokens);
+  freeStructure(ht);
   return 0;
 }

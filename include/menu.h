@@ -8,16 +8,13 @@
 #include "stack.h"
 #include "tree.h"
 
-#include <any>
 #include <cassert>
 #include <iostream>
-#include <map>
 #include <sstream>
-#include <vector>
 
 using namespace std;
 
-void mMenu(map<string, any> &mp, const vector<string> tokens);
+void mMenu(HNode &ht, Node *tokens, Data &data);
 size_t stringToSize(const string &str);
 
 #endif // MENU_H

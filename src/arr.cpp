@@ -64,4 +64,7 @@ void readArray(Array *arr) {
   }
 }
 
-void freeArray(Array *arr) { delete[] arr->data; }
+void freeArray(Array *arr) {
+  delete[] arr->data;
+  delete arr;
+}

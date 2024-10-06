@@ -10,18 +10,18 @@ unsigned hashFunction(const string &key) {
 
 void initHashTable(HashTable &ht) {
   ht.table = new HNode *[TABLE_SIZE];
-  for (int i = 0; i < TABLE_SIZE; i++) {
+  for (size_t i = 0; i < TABLE_SIZE; i++) {
     ht.table[i] = nullptr;
   }
 }
 
-void insert(HashTable &ht, const string &key, const string &value) {
+void insert(HashTable &ht, const string &key, void *value, const string &type) {
   unsigned index = hashFunction(key);
-  HNode *newNode = new HNode{key, value, ht.table[index]};
+  HNode *newNode = new HNode{key, value, ht.table[index], type};
   ht.table[index] = newNode;
 }
 
-string get(HashTable &ht, const string &key) {
+void *get(HashTable &ht, const string &key) {
   unsigned index = hashFunction(key);
   HNode *curNode = ht.table[index];
 
@@ -29,9 +29,7 @@ string get(HashTable &ht, const string &key) {
     curNode = curNode->next;
   }
 
-  assert(curNode);
-
-  return curNode->value;
+  return curNode ? curNode->value : nullptr;
 }
 
 void remove(HashTable &ht, const string &key) {
