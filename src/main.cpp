@@ -1,33 +1,6 @@
 #include "../include/file_manager.h"
 #include "../include/menu.h"
 
-Node *parse(const string &input) {
-  Node *tokens = nullptr;
-  SinglyLinkedList SList;
-  istringstream iss(input);
-  string token;
-
-  while (iss >> token) {
-    SList.addTail(tokens, token);
-  }
-
-  return tokens;
-}
-
-void freeStructure(HNode &ht) {
-  if (ht.type == "Array") {
-    freeArray(static_cast<Array *>(ht.value));
-  }
-}
-
-void printStructure(HNode &ht, const string key) {
-  /*assert(ht);*/
-
-  if (ht.type == "Array") {
-    readArray(static_cast<Array *>(ht.value));
-  }
-}
-
 int main(int argc, char **argv) {
   assert(argc == 5 && string(argv[1]) == "--file" &&
          string(argv[3]) == "--query");
@@ -42,21 +15,30 @@ int main(int argc, char **argv) {
 
   switch (tokens->data[0]) {
   case 'M':
-    mMenu(ht, tokens, data);
-    break;
-  case 'L':
+    mMenu(tokens, data);
     break;
   case 'Q':
+    qMenu(tokens, data);
     break;
   case 'S':
+    if (tokens->data[1] == 'L') {
+      slMenu(tokens, data);
+      break;
+    }
+    sMenu(tokens, data);
+    break;
+  case 'D':
+    dlMenu(tokens, data);
     break;
   case 'H':
+    hMenu(tokens, data);
     break;
   case 'T':
+    tMenu(tokens, data);
     break;
   case 'P':
     if (tokens->data == "PRINT") {
-      /*printStructure(ht, "h1");*/
+      cout << data.str << endl;
       break;
     }
   default:
@@ -67,6 +49,5 @@ int main(int argc, char **argv) {
   replaceLineInFile(argv[2], data.numLine, data.str);
 
   SList.freeList(tokens);
-  freeStructure(ht);
   return 0;
 }

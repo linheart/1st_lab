@@ -14,7 +14,15 @@
 
 using namespace std;
 
-void mMenu(HNode &ht, Node *tokens, Data &data);
+void mMenu(Node *tokens, Data &data);
+void slMenu(Node *tokens, Data &data);
+void dlMenu(Node *tokens, Data &data);
+void qMenu(Node *tokens, Data &data);
+void sMenu(Node *tokens, Data &data);
+void hMenu(Node *tokens, Data &data);
+void tMenu(Node *tokens, Data &data);
+void addToData(Data &data, TNode *node);
 size_t stringToSize(const string &str);
+Node *parse(const string &input);
 
 #endif // MENU_H

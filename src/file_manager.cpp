@@ -46,6 +46,10 @@ void replaceLineInFile(const string &filePath, int lineNumber,
     currentLine++;
   }
 
+  if (lineNumber == 0) {
+    tempFile << newLine << endl;
+  }
+
   inputFile.close();
   tempFile.close();
 
